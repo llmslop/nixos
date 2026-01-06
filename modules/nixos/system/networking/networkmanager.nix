@@ -12,7 +12,6 @@ let
     mkIf
     types
     ;
-  inherit (lib.thurs) mkOpt;
   inherit (config.mine) user;
   cfg = config.mine.system.networking.networkmanager;
 
