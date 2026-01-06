@@ -56,6 +56,7 @@
 
           ./modules/nixos/apps/shell/bash.nix
           ./modules/nixos/apps/cli/essential.nix
+          ./modules/nixos/apps/cli/zoxide.nix
           ./modules/nixos/apps/i18n/fcitx5.nix
 
           ./modules/nixos/apps/browser/chromium.nix

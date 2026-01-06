@@ -8,6 +8,7 @@ let
   inherit (lib) mkEnableOption mkIf;
   inherit (config.mine) user;
   cfg = config.mine.apps.shell.bash;
+  inherit (config.mine.apps.cli) zoxide;
 in
 {
   options.mine.apps.shell.bash = {
@@ -28,7 +29,9 @@ in
           ".." = "cd ..";
           gc = "git clone";
           rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#mine";
+          cd = mkIf zoxide.enable "z";
         };
+        bashrcExtra = "eval \"$(zoxide init bash)\"";
       };
     };
   };
