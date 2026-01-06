@@ -5,7 +5,12 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib)
+    mkEnableOption
+    mkIf
+    mkOption
+    types
+    ;
   inherit (config.mine) user;
   cfg = config.mine.apps.shell.bash;
   inherit (config.mine.apps.cli) zoxide;
@@ -13,6 +18,14 @@ in
 {
   options.mine.apps.shell.bash = {
     enable = mkEnableOption "Enable Bash shell";
+    rebuild = {
+      enable = mkEnableOption "Enable rebuild alias";
+      nixosDir = mkOption {
+        type = types.str;
+        description = "`nixos` directory (this repo)";
+        default = "$HOME/dev/nixos";
+      };
+    };
   };
 
   config = mkIf cfg.enable {
@@ -28,8 +41,8 @@ in
           g = "git";
           ".." = "cd ..";
           gc = "git clone";
-          rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#mine";
           cd = mkIf zoxide.enable "z";
+          rebuild = mkIf cfg.rebuild.enable "nixos-rebuild switch --flake ${cfg.rebuild.nixosDir}#mine --sudo";
         };
         bashrcExtra = "eval \"$(zoxide init bash)\"";
       };
