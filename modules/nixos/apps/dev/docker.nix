@@ -39,5 +39,9 @@ in
     users.users.${user.name}.extraGroups = [ "docker" ];
 
     hardware.nvidia-container-toolkit.enable = true;
+
+    environment.systemPackages = with pkgs; [
+      docker-compose
+    ];
   };
 }
