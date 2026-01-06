@@ -74,7 +74,7 @@ jobs:
           git add .
 
           echo "Building Flake..."
-          if nix build --extra-experimental-features 'nix-command flakes' /home/runner/work/nixos/nixos#mine; then
+          if nix build --extra-experimental-features 'nix-command flakes' nix build .#nixosConfigurations.mine.config.system.build.toplevel; then
             echo "success=true" >> $GITHUB_ENV
           else
             echo "Build failed, listing flake.lock for debugging:"
