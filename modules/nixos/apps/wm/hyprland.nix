@@ -13,7 +13,6 @@ let
     ;
   inherit (config.mine) user;
   cfg = config.mine.apps.wm.hyprland;
-  network = config.mine.system.networking.networkmanager;
 in
 {
   options.mine.apps.wm.hyprland = {
@@ -45,11 +44,15 @@ in
         hyprpaper = mkIf cfg.wallpaper.enable {
           enable = true;
           settings = {
-            preload = [
-              cfg.wallpaper.path
-            ];
             wallpaper = [
-              ",${cfg.wallpaper.path}"
+              {
+                monitor = "eDP-1";
+                inherit (cfg.wallpaper) path;
+              }
+              {
+                monitor = "HDMI-A-1";
+                inherit (cfg.wallpaper) path;
+              }
             ];
           };
         };
