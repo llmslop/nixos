@@ -11,7 +11,7 @@ let
 in
 {
   options.mine.apps.screenshot.grimblast = {
-    enable = mkEnableOption "Enable screenshot utilities (grimblast, satty)";
+    enable = mkEnableOption "Enable screenshot utilities (grimblast and satty editor)";
   };
 
   config = mkIf cfg.enable {

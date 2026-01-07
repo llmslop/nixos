@@ -11,7 +11,7 @@ let
 in
 {
   options.mine.apps.notification.mako = {
-    enable = mkEnableOption "Enable notification daemon (mako)";
+    enable = mkEnableOption "Enable notification daemon (mako) and utilities (libnotify)";
   };
 
   config = mkIf cfg.enable {
