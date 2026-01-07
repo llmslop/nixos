@@ -125,6 +125,16 @@ in
     # LSP & Formatting
     # ─────────────────────────────────────────────────────────
     {
+      key = "grd";
+      action = mkRaw "vim.lsp.buf.definition";
+      options.desc = "Go to Definition (LSP)";
+    }
+    {
+      key = "grD";
+      action = mkRaw "vim.lsp.buf.declaration";
+      options.desc = "Go to Declaration (LSP)";
+    }
+    {
       key = "<leader>f";
       action = mkRaw "vim.lsp.buf.format";
       options.desc = "Format buffer (LSP)";
