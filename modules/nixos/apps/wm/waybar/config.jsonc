@@ -16,7 +16,7 @@
     "network",
     "battery",
     // "bluetooth",
-    "pulseaudio",
+    "wireplumber",
     "backlight",
     "custom/temperature",
     "memory",
@@ -86,7 +86,7 @@
     "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
     "tooltip": true
   },
-  "pulseaudio": {
+  "wireplumber": {
     "format": "{icon}{volume}% ",
     "format-muted": " 󰖁 0% ",
     "format-icons": {
@@ -103,7 +103,9 @@
       ]
     },
     "on-click-right": "pwvucontrol",
-    "on-click": "pactl -- set-sink-mute 0 toggle",
+    "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%+",
+    "on-scroll-down": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 1%-",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
     "tooltip": true,
     "tooltip-format": "Volume: {volume}%"
   },

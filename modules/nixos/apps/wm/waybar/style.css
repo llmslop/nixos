@@ -35,7 +35,7 @@
 #custom-reboot,
 #bluetooth,
 #battery,
-#pulseaudio,
+#wireplumber,
 #backlight,
 #custom-temperature,
 #memory,
@@ -73,7 +73,7 @@
 	background-color: #cba6f7;
 }
 
-#pulseaudio {
+#wireplumber {
 	background-color: #89dceb;
 }
 
