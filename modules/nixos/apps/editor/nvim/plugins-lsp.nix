@@ -5,6 +5,8 @@
   plugins = {
     # LSP base configuration
     lspconfig.enable = true;
+    rustaceanvim.enable = true; # Rust-specific enhancements
+    fidget.enable = true; # Useful LSP status updates
 
     # Code completion engine
     blink-cmp = {
