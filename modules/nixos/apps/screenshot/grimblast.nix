@@ -7,10 +7,10 @@
 let
   inherit (lib) mkEnableOption mkIf;
   inherit (config.mine) user;
-  cfg = config.mine.apps.utils.screenshots;
+  cfg = config.mine.apps.screenshot.grimblast;
 in
 {
-  options.mine.apps.utils.screenshots = {
+  options.mine.apps.screenshot.grimblast = {
     enable = mkEnableOption "Enable screenshot utilities (grimblast, satty)";
   };
 

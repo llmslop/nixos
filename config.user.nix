@@ -55,13 +55,13 @@
         };
         terminal.ghostty.enable = true;
         launcher.rofi.enable = true;
-        utils = {
-          screenshots.enable = true;
+        screenshot.grimblast.enable = true;
+        cli = {
           brightness.enable = true;
           media.enable = true;
-          notifications.enable = true;
-          clipboard.enable = true;
         };
+        notification.mako.enable = true;
+        clipboard.wl-clipboard.enable = true;
         browser.firefox.enable = true;
         browser.zen.enable = true;
         chat.discord.enable = true;

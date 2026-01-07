@@ -7,20 +7,20 @@
 let
   inherit (lib) mkEnableOption mkIf;
   inherit (config.mine) user;
-  cfg = config.mine.apps.utils.notifications;
+  cfg = config.mine.apps.clipboard.wl-clipboard;
 in
 {
-  options.mine.apps.utils.notifications = {
-    enable = mkEnableOption "Enable notification daemon (mako)";
+  options.mine.apps.clipboard.wl-clipboard = {
+    enable = mkEnableOption "Enable clipboard utilities";
   };
 
   config = mkIf cfg.enable {
     home-manager.users.${user.name} = {
-      services.mako.enable = true;
+      services.wl-clip-persist.enable = true;
     };
 
     environment.systemPackages = with pkgs; [
-      libnotify
+      wl-clipboard
     ];
   };
 }

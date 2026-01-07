@@ -79,11 +79,11 @@
 
           ./modules/nixos/apps/terminal/ghostty.nix
           ./modules/nixos/apps/launcher/rofi.nix
-          ./modules/nixos/apps/utils/screenshots.nix
-          ./modules/nixos/apps/utils/brightness.nix
-          ./modules/nixos/apps/utils/media.nix
-          ./modules/nixos/apps/utils/notifications.nix
-          ./modules/nixos/apps/utils/clipboard.nix
+          ./modules/nixos/apps/screenshot/grimblast.nix
+          ./modules/nixos/apps/cli/brightness.nix
+          ./modules/nixos/apps/cli/media.nix
+          ./modules/nixos/apps/notification/mako.nix
+          ./modules/nixos/apps/clipboard/wl-clipboard.nix
 
           ./modules/nixos/apps/wm/hyprland.nix
           ./modules/nixos/apps/wm/waybar/default.nix

@@ -6,16 +6,16 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.mine.apps.utils.brightness;
+  cfg = config.mine.apps.cli.media;
 in
 {
-  options.mine.apps.utils.brightness = {
-    enable = mkEnableOption "Enable brightness control utilities";
+  options.mine.apps.cli.media = {
+    enable = mkEnableOption "Enable media control utilities";
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      brightnessctl
+      playerctl
     ];
   };
 }
