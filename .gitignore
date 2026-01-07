@@ -2,3 +2,4 @@
 # /hardware-configuration.nix
 /.pre-commit-config.yaml
 /.direnv
+/.envrc
