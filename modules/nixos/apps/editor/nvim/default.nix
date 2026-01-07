@@ -4,7 +4,6 @@
   inputs,
   config,
   lib,
-  pkgs,
   ...
 }:
 let
@@ -20,34 +19,34 @@ in
   options.mine.apps.editor.nvim = {
     enable = mkEnableOption "Enable neovim";
     default = mkEnableOption "Make neovim the default editor";
+    lsp = {
+      skipInstallServers = mkEnableOption "Skip automatic installation of LSP servers";
+    };
   };
 
   config = mkIf cfg.enable {
-    # System packages needed for neovim
-    environment.systemPackages = with pkgs; [
-      nixfmt-rfc-style # Nix formatter for LSP
-    ];
-
     # Home-manager configuration
     home-manager.users.${user.name} = {
       imports = [ inputs.nixvim.homeModules.default ];
-      programs.nixvim =
-        { lib, ... }:
-        {
-          enable = true;
-          defaultEditor = mkIf cfg.default true;
+      programs.nixvim = {
+        enable = true;
+        defaultEditor = mkIf cfg.default true;
 
-          # Import all configuration modules
-          imports = [
-            ./globals.nix # Global settings and colorscheme
-            ./options.nix # Editor options
-            ./plugins-ui.nix # UI plugins
-            ./plugins-lsp.nix # LSP configuration
-            ./plugins-treesitter.nix # Treesitter plugins
-            ./plugins-copilot.nix # Copilot AI assistance
-            ./keymaps.nix # Keybindings
-          ];
+        # Import all configuration modules
+        imports = [
+          ./globals.nix # Global settings and colorscheme
+          ./options.nix # Editor options
+          ./plugins-ui.nix # UI plugins
+          (import ./plugins-lsp.nix { inherit (cfg) lsp; }) # LSP configuration
+          ./plugins-treesitter.nix # Treesitter plugins
+          ./plugins-copilot.nix # Copilot AI assistance
+          ./keymaps.nix # Keybindings
+        ];
+
+        extraSpecialArgs = {
+          nvimCfg = cfg;
         };
+      };
     };
   };
 }

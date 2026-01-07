@@ -48,6 +48,7 @@
         editor.nvim = {
           enable = true;
           default = true;
+          lsp.skipInstallServers = true;
         };
         editor.helix.enable = true;
         filemanager.dolphin = {
@@ -67,13 +68,16 @@
             path = "/mnt/cocker/docker";
           };
         };
-        dev.rust.enable = true;
+        # dev.rust.enable = true;
         cli.essential.enable = true;
         cli.zoxide.enable = true;
         i18n.fcitx5.enable = true;
-        shell.bash.rebuild = {
-          enable = true;
-          nixosDir = "$HOME/dev/nixos";
+        shell = {
+          direnv.enable = true;
+          bash.rebuild = {
+            enable = true;
+            nixosDir = "$HOME/dev/nixos";
+          };
         };
       };
     };

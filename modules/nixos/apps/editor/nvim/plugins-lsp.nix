@@ -1,6 +1,15 @@
 # LSP (Language Server Protocol) configuration
 # Code completion, language servers, and formatting
-{ lib, pkgs, ... }:
+{ lsp, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
+let
+  inherit (lib) mkIf;
+  inherit (lsp) skipInstallServers;
+in
 {
   plugins = {
     # LSP base configuration
@@ -32,24 +41,31 @@
   };
 
   # Language server configurations
+  # NOTE: package are intentionally set to null,
+  # To use LSPs, install them manually in your nix development shell
   lsp.servers = {
     # C/C++ language server
     clangd = {
+      enable = true;
+      package = mkIf skipInstallServers null;
       config = {
         cmd = [
           "clangd"
           "--background-index" # Index in background for better performance
         ];
       };
-      enable = true;
     };
 
     # Lua language server
-    lua_ls.enable = true;
+    lua_ls = {
+      enable = true;
+      package = mkIf skipInstallServers null;
+    };
 
     # Nix language server
     nixd = {
       enable = true;
+      package = mkIf skipInstallServers null;
       config.nixd.formatting.command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
     };
   };

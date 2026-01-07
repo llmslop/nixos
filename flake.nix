@@ -55,8 +55,10 @@
           ./modules/nixos/user/starship/default.nix
 
           ./modules/nixos/apps/shell/bash.nix
+          ./modules/nixos/apps/shell/direnv.nix
           ./modules/nixos/apps/cli/essential.nix
           ./modules/nixos/apps/cli/zoxide.nix
+
           ./modules/nixos/apps/i18n/fcitx5.nix
 
           ./modules/nixos/apps/browser/chromium.nix
@@ -116,6 +118,10 @@
           in
           pkgs.mkShell {
             inherit shellHook;
+            packages = with pkgs; [
+              nixfmt-rfc-style
+              nixd
+            ];
             buildInputs = enabledPackages;
           };
       });
