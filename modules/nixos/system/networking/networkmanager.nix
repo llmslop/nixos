@@ -38,6 +38,9 @@ in
 
     users.users.${user.name}.extraGroups = [ "networkmanager" ];
     systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
-    programs.nm-applet.enable = mkIf cfg.applet true;
+
+    home-manager.users.${user.name} = mkIf cfg.applet {
+      services.network-manager-applet.enable = true;
+    };
   };
 }
