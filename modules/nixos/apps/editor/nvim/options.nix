@@ -58,4 +58,14 @@ in
     foldlevel = 99; # Start with all folds open
     foldlevelstart = 99; # Start with all folds open on file open
   };
+
+  extraConfigLua = ''
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "markdown", "tex", "text", "gitcommit", "typst" },
+      callback = function()
+        vim.opt_local.textwidth = 80
+        vim.opt_local.formatoptions:append("t")
+      end,
+    })
+  '';
 }
