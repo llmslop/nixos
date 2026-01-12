@@ -92,5 +92,7 @@ in
     # NOTE: deno and ts_ls really hates each other, install only one of them in your devenv
     ts_ls = enabled;
     denols = enabled;
+    ty = enabled;
+    ruff = enabled;
   };
 }
