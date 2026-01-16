@@ -33,6 +33,10 @@ in
       daemon.settings = mkIf cfg.customPath.enable {
         data-root = cfg.customPath.path;
       };
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
     };
 
     # basically root, beware!
