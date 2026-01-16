@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }:
 let
@@ -15,7 +16,18 @@ in
 
   config = mkIf cfg.enable {
     home-manager.users.${user.name} = {
-      programs.sioyek.enable = true;
+      programs.sioyek = {
+        enable = true;
+        package = pkgs.symlinkJoin {
+          name = "sioyek";
+          paths = [ pkgs.sioyek ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            wrapProgram $out/bin/sioyek \
+              --set QT_QPA_PLATFORM xcb
+          '';
+        };
+      };
     };
   };
 }
