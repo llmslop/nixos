@@ -20,7 +20,6 @@ let
   imageMimeTypes = [
     "image/png"
     "image/jpeg"
-    "image/jpg"
     "image/gif"
     "image/webp"
     "image/svg+xml"
@@ -40,7 +39,6 @@ let
     "video/mpeg"
     "video/x-msvideo"
     "audio/mpeg"
-    "audio/mp3"
     "audio/ogg"
     "audio/flac"
     "audio/wav"
