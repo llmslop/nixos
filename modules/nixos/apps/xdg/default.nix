@@ -45,12 +45,14 @@ let
   ];
 
   # Helper function to create MIME associations
-  createMimeAssoc = mimeTypes: desktopFile: builtins.listToAttrs (
-    map (mimeType: {
-      name = mimeType;
-      value = desktopFile;
-    }) mimeTypes
-  );
+  createMimeAssoc =
+    mimeTypes: desktopFile:
+    builtins.listToAttrs (
+      map (mimeType: {
+        name = mimeType;
+        value = desktopFile;
+      }) mimeTypes
+    );
 
 in
 {
