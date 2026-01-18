@@ -94,5 +94,20 @@ in
     denols = enabled;
     ty = enabled;
     ruff = enabled;
+
+    neocmake = {
+      enable = true;
+      package = mkIf skipInstallServers null;
+      config.init_options = {
+        format = {
+          enable = true;
+        };
+        lint = {
+          enable = true;
+        };
+        scan_cmake_in_package = false;
+        semantic_token = false;
+      };
+    };
   };
 }
